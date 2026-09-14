@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Shibow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="game"></canvas>
+
+  <!-- Экран 1: ввод ника -->
+  <div class="screen" id="screen-nick">
+    <h1 class="logo">SHIBOW</h1>
+    <p class="hint">ВВЕДИ НИК</p>
+    <input id="nick-input" maxlength="12" placeholder="PILOT" autocomplete="off" spellcheck="false">
+    <button class="btn" id="nick-confirm">ГОТОВО</button>
+    <p class="error" id="nick-error"></p>
+  </div>
+
+  <!-- Экран 2: меню -->
+  <div class="screen" id="screen-menu">
+    <h1 class="logo">SHIBOW</h1>
+    <div class="menu-btns">
+      <button class="btn" data-action="play">ИГРАТЬ</button>
+      <button class="btn" data-action="settings">НАСТРОЙКИ</button>
+      <button class="btn" data-action="leaderboard">ЛИДЕРЫ</button>
+      <button class="btn" data-action="shop">МАГАЗИН</button>
+    </div>
+    <div class="stats">
+      <span id="menu-nick">—</span>
+      <span id="menu-coins">0 ♦</span>
+    </div>
+  </div>
+
+  <!-- Экран 3: настройки -->
+  <div class="screen" id="screen-settings">
+    <h2>НАСТРОЙКИ</h2>
+    <div class="setting-row">
+      <span>УПРАВЛЕНИЕ</span>
+      <div class="seg" id="ctrl-seg">
+        <button data-ctrl="arrows">СТРЕЛКИ</button>
+        <button data-ctrl="wasd">WASD</button>
+        <button data-ctrl="mouse">МЫШЬ</button>
+      </div>
+    </div>
+    <div class="setting-row">
+      <span>ЧУВСТВИТЕЛЬНОСТЬ</span>
+      <input type="range" id="sens" min="0.5" max="1.5" step="0.1">
+      <span id="sens-val">1.0</span>
+    </div>
+    <div class="setting-row">
+      <span>НИК</span>
+      <input id="nick-input-2" maxlength="12" autocomplete="off" spellcheck="false">
+    </div>
+    <button class="btn" data-action="back">НАЗАД</button>
+  </div>
+
+  <!-- Заглушки -->
+  <div class="screen" id="screen-leaderboard">
+    <h2>ЛИДЕРЫ</h2>
+    <p class="hint">СКОРО</p>
+    <button class="btn" data-action="back">НАЗАД</button>
+  </div>
+  <div class="screen" id="screen-shop">
+    <h2>МАГАЗИН</h2>
+    <p class="hint">СКОРО</p>
+    <button class="btn" data-action="back">НАЗАД</button>
+  </div>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div id="hud-score">0</div>
+    <div id="hud-charges">♦ × 0</div>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
