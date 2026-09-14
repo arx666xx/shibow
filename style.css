@@ -1,0 +1,165 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a1a;
+  --fg: #00f0ff;
+  --accent: #ff00aa;
+  --gold: #ffcc00;
+  --green: #00ff88;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Press Start 2P', monospace;
+  -webkit-font-smoothing: none;
+  user-select: none;
+  touch-action: none;
+}
+
+#app { position: fixed; inset: 0; }
+
+canvas#game {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated;
+}
+
+/* Экраны */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+  text-align: center;
+  background: rgba(10, 10, 26, 0.85);
+  z-index: 10;
+}
+.screen.active { display: flex; }
+.screen.hidden { display: none; }
+
+.logo {
+  font-size: 40px;
+  color: var(--fg);
+  text-shadow: 0 0 8px var(--fg), 0 0 24px var(--fg), 0 0 48px var(--accent);
+  letter-spacing: 4px;
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 20px;
+  color: var(--fg);
+  text-shadow: 0 0 6px var(--fg);
+  letter-spacing: 2px;
+}
+
+.hint { font-size: 10px; opacity: 0.7; letter-spacing: 1px; }
+.error { font-size: 10px; color: var(--accent); min-height: 12px; }
+
+/* Кнопки */
+.btn {
+  font-family: inherit;
+  font-size: 12px;
+  padding: 14px 24px;
+  background: transparent;
+  color: var(--fg);
+  border: 2px solid var(--fg);
+  cursor: pointer;
+  letter-spacing: 2px;
+  box-shadow: 0 0 8px var(--fg), inset 0 0 8px rgba(0, 240, 255, 0.15);
+  transition: all 0.12s ease;
+  min-width: 200px;
+}
+.btn:hover, .btn:focus {
+  background: var(--fg);
+  color: var(--bg);
+  box-shadow: 0 0 16px var(--fg), 0 0 32px var(--fg);
+  outline: none;
+}
+.btn:active { transform: scale(0.97); }
+
+.menu-btns { display: flex; flex-direction: column; gap: 14px; }
+
+/* Инпут ника */
+input[type="text"], #nick-input, #nick-input-2 {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 12px 16px;
+  background: transparent;
+  border: 2px solid var(--fg);
+  color: var(--fg);
+  text-align: center;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  outline: none;
+  width: 240px;
+  box-shadow: inset 0 0 8px rgba(0, 240, 255, 0.2);
+}
+input:focus { box-shadow: 0 0 16px var(--fg), inset 0 0 8px rgba(0, 240, 255, 0.3); }
+
+/* Настройки */
+.setting-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.seg { display: flex; gap: 6px; }
+.seg button {
+  font-family: inherit;
+  font-size: 9px;
+  padding: 8px 10px;
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--fg);
+  cursor: pointer;
+  letter-spacing: 1px;
+  opacity: 0.5;
+}
+.seg button.active {
+  opacity: 1;
+  box-shadow: 0 0 8px var(--fg), inset 0 0 8px rgba(0,240,255,0.3);
+  background: rgba(0,240,255,0.1);
+}
+input[type="range"] {
+  accent-color: var(--fg);
+  width: 140px;
+}
+
+/* HUD */
+#hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  padding: 20px 24px;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 14px;
+  color: var(--fg);
+  text-shadow: 0 0 6px var(--fg);
+  letter-spacing: 2px;
+}
+#hud.hidden { display: none; }
+#hud-charges { color: var(--gold); text-shadow: 0 0 6px var(--gold); }
+
+/* Stats */
+.stats {
+  display: flex;
+  gap: 24px;
+  font-size: 10px;
+  opacity: 0.8;
+  letter-spacing: 2px;
+}
